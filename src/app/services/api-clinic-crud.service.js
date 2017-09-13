@@ -22,8 +22,14 @@ var ApiClinicCrudService = (function () {
             var clinic = _this.clinicFactory.createClinic();
             clinic.address = parameters.address;
             clinic.title = parameters.title;
-            // let clinics = localStorage.getItem(this.storageKey);
-            //localStorage.setItem('clinics', 1);
+            var clinics = JSON.parse(localStorage.getItem(_this.storageKey));
+            if (clinics === null) {
+                localStorage.setItem(_this.storageKey, JSON.stringify([clinic]));
+            }
+            else {
+                clinics.push(clinic);
+                localStorage.setItem(_this.storageKey, JSON.stringify(clinics));
+            }
             observer.next(clinic);
         });
     };

@@ -3,11 +3,20 @@ import { Routes, RouterModule } from '@angular/router';
 import { ModuleWithProviders } from '@angular/core';
 
 import { DashboardComponent }  from './components/dashboard/dashboard.component';
+import { CreateClinicComponent }  from './components/create-clinic/create-clinic.component';
+import { ConfirmDeactivateGuard }    from './../../guards/confirm-deactivate.guard';
 
 const aboutRoutes: Routes = [
     {
         path: '',
-        component: DashboardComponent
+        component: DashboardComponent,
+        children: [
+            {
+                path: 'new',
+                component: CreateClinicComponent,
+                canDeactivate: [ ConfirmDeactivateGuard ]
+            }
+        ]
     }
 ];
 

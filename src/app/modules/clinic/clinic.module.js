@@ -6,10 +6,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var core_1 = require("@angular/core");
-var common_1 = require("@angular/common");
 var forms_1 = require("@angular/forms");
+var common_1 = require("@angular/common");
 var clinic_routing_1 = require("./clinic.routing");
 var dashboard_component_1 = require("./components/dashboard/dashboard.component");
+var create_clinic_component_1 = require("./components/create-clinic/create-clinic.component");
+var clinic_form_component_1 = require("./components/clinic-form/clinic-form.component");
 var ClinicModule = (function () {
     function ClinicModule() {
     }
@@ -17,8 +19,8 @@ var ClinicModule = (function () {
 }());
 ClinicModule = __decorate([
     core_1.NgModule({
-        imports: [clinic_routing_1.routing, common_1.CommonModule, forms_1.FormsModule],
-        declarations: [dashboard_component_1.DashboardComponent],
+        imports: [clinic_routing_1.routing, common_1.CommonModule, forms_1.FormsModule, forms_1.ReactiveFormsModule],
+        declarations: [dashboard_component_1.DashboardComponent, create_clinic_component_1.CreateClinicComponent, clinic_form_component_1.ClinicFormComponent],
         bootstrap: [],
         providers: [],
     })

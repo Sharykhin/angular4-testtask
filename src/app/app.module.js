@@ -11,6 +11,10 @@ var app_routing_1 = require("./app.routing");
 var app_component_1 = require("./components/app/app.component");
 var not_found_component_1 = require("./components/not-found/not-found.component");
 var home_component_1 = require("./components/home/home.component");
+var api_clinic_crud_service_1 = require("./services/api-clinic-crud.service");
+var utils_1 = require("./services/utils");
+var clinic_factory_1 = require("./factories/models/clinic.factory");
+var confirm_deactivate_guard_1 = require("./guards/confirm-deactivate.guard");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -22,7 +26,11 @@ AppModule = __decorate([
         declarations: [app_component_1.AppComponent, home_component_1.HomeComponent, not_found_component_1.NotFoundComponent],
         bootstrap: [app_component_1.AppComponent],
         providers: [
-            app_routing_1.appRoutingProviders
+            app_routing_1.appRoutingProviders,
+            api_clinic_crud_service_1.ApiClinicCrudService,
+            clinic_factory_1.ClinicFactory,
+            utils_1.Utils,
+            confirm_deactivate_guard_1.ConfirmDeactivateGuard
         ]
     })
 ], AppModule);
