@@ -1,0 +1,4 @@
+<div class="row">
+    <clinic-item *ngFor="let clinic of clinics" (onDeleted)="onDelete($event)" [clinic]="clinic"></clinic-item>
+    <h4 *ngIf="clinics.length === 0">There are no clinics</h4>
+</div>

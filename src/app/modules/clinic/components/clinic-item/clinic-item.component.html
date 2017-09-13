@@ -1,0 +1,15 @@
+<div class="col-md-4 col-xs-12">
+    <div class="item-block">
+        <div class="property-description">
+            <span class="label">Title:</span>
+            <span>{{ clinic.title }}</span>
+        </div>
+        <div class="property-description">
+            <span class="label">Address:</span>
+            <span>{{ clinic.address }}</span>
+        </div>
+        <div>
+            <a (click)="onDelete()" class="btn btn-xs btn-danger">Delete</a>
+        </div>
+    </div>
+</div>

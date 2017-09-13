@@ -33,6 +33,25 @@ var ApiClinicCrudService = (function () {
             observer.next(clinic);
         });
     };
+    //TODO: here is we may want to pass pagination parameters
+    ApiClinicCrudService.prototype.list = function () {
+        var _this = this;
+        return new Rx_1.Observable(function (observer) {
+            var clinics = JSON.parse(localStorage.getItem(_this.storageKey));
+            observer.next(clinics || []);
+        });
+    };
+    ApiClinicCrudService.prototype.remove = function (clinic) {
+        var _this = this;
+        return new Rx_1.Observable(function (observer) {
+            var clinics = JSON.parse(localStorage.getItem(_this.storageKey));
+            var filteredClinics = clinics.filter(function (item) {
+                return item.id !== clinic.id;
+            });
+            localStorage.setItem(_this.storageKey, JSON.stringify(filteredClinics));
+            observer.next(true);
+        });
+    };
     return ApiClinicCrudService;
 }());
 ApiClinicCrudService = __decorate([

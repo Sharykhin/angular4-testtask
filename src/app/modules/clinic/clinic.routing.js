@@ -3,11 +3,16 @@ var router_1 = require("@angular/router");
 var dashboard_component_1 = require("./components/dashboard/dashboard.component");
 var create_clinic_component_1 = require("./components/create-clinic/create-clinic.component");
 var confirm_deactivate_guard_1 = require("./../../guards/confirm-deactivate.guard");
+var clinic_list_component_1 = require("./components/clinic-list/clinic-list.component");
 var aboutRoutes = [
     {
         path: '',
         component: dashboard_component_1.DashboardComponent,
         children: [
+            {
+                path: '',
+                component: clinic_list_component_1.ClinicListComponent
+            },
             {
                 path: 'new',
                 component: create_clinic_component_1.CreateClinicComponent,

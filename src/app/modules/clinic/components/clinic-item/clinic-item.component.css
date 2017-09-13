@@ -1,0 +1,8 @@
+.item-block {
+    border: 1px solid #ccc;
+    padding:5px;
+}
+
+.property-description .label {
+    color: #000;
+}

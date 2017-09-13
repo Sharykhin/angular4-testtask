@@ -27,7 +27,26 @@ export class ApiClinicCrudService implements ApiClinicCrudInterface {
                 clinics.push(clinic);
                 localStorage.setItem(this.storageKey, JSON.stringify(clinics));
             }
-            observer.next(clinic)
+            observer.next(clinic);
+        });
+    }
+
+    //TODO: here is we may want to pass pagination parameters
+    list(): Observable<Clinic[]> {
+        return new Observable((observer: Observer<any>) => {
+            let clinics = JSON.parse(localStorage.getItem(this.storageKey));
+            observer.next(clinics || []);
+        });
+    }
+
+    remove(clinic: Clinic): Observable<boolean> {
+        return new Observable((observer: Observer<any>) => {
+            let clinics = JSON.parse(localStorage.getItem(this.storageKey));
+            let filteredClinics = clinics.filter(function (item: Clinic) {
+                return item.id !== clinic.id;
+            });
+            localStorage.setItem(this.storageKey, JSON.stringify(filteredClinics));
+            observer.next(true);
         });
     }
 }
