@@ -9,6 +9,7 @@ import { HomeComponent } from './components/home/home.component';
 import {ApiClinicCrudService} from './services/api-clinic-crud.service';
 import {Utils} from './services/utils';
 import {ClinicFactory} from './factories/models/clinic.factory';
+import {PatientFactory} from './factories/models/patient.factory';
 import {ConfirmDeactivateGuard} from './guards/confirm-deactivate.guard';
 
 
@@ -20,6 +21,7 @@ import {ConfirmDeactivateGuard} from './guards/confirm-deactivate.guard';
     appRoutingProviders,
     ApiClinicCrudService,
     ClinicFactory,
+    PatientFactory,
     Utils,
     ConfirmDeactivateGuard
   ]

@@ -12,28 +12,25 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 var core_1 = require("@angular/core");
-var clinic_1 = require("./../../models/clinic");
+var patient_1 = require("./../../models/patient");
 var utils_1 = require("./../../services/utils");
-var ClinicFactory = (function () {
-    function ClinicFactory(utils) {
+var PatientFactory = (function () {
+    function PatientFactory(utils) {
         this.utils = utils;
     }
-    ClinicFactory.prototype.createClinic = function (parameters) {
-        parameters = parameters || {};
-        var clinic = new clinic_1.Clinic();
-        clinic.id = parameters.id || this.utils.uuid();
-        clinic.title = parameters.title || null;
-        clinic.address = parameters.address || null;
-        clinic.patients = [];
-        clinic.therapists = [];
-        return clinic;
+    PatientFactory.prototype.createPatient = function () {
+        var patient = new patient_1.Patient();
+        patient.id = this.utils.uuid();
+        patient.clinics = [];
+        patient.therapists = [];
+        return patient;
     };
-    return ClinicFactory;
+    return PatientFactory;
 }());
-ClinicFactory = __decorate([
+PatientFactory = __decorate([
     core_1.Injectable(),
     __param(0, core_1.Inject(utils_1.Utils)),
     __metadata("design:paramtypes", [utils_1.Utils])
-], ClinicFactory);
-exports.ClinicFactory = ClinicFactory;
-//# sourceMappingURL=clinic.factory.js.map
+], PatientFactory);
+exports.PatientFactory = PatientFactory;
+//# sourceMappingURL=patient.factory.js.map

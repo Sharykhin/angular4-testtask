@@ -10,4 +10,6 @@ export interface ApiClinicCrudInterface {
     remove(clinic: Clinic): Observable<boolean>;
 
     get(id: string) : Observable<Clinic>;
+
+    save(clinic: Clinic): Observable<boolean>;
 }

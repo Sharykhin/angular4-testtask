@@ -8,9 +8,14 @@
             <span class="label">Address:</span>
             <span>{{ clinic.address }}</span>
         </div>
+        <div class="property-description">
+            <span class="label">Patients:</span>
+            <span>{{ clinic.patients.length }}</span>
+        </div>
         <div>
             <a (click)="onDelete()" class="btn btn-xs btn-danger">Delete</a>
             <a [routerLink]="['/clinics', clinic.id]" class="btn btn-xs btn-info">View</a>
+            <a (click)="addPatient()">Add Patient</a>
         </div>
     </div>
 </div>

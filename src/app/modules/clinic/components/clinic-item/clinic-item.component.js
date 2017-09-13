@@ -14,9 +14,11 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 var core_1 = require("@angular/core");
 var clinic_1 = require("./../../../../models/clinic");
 var api_clinic_crud_service_1 = require("./../../../../services/api-clinic-crud.service");
+var patient_factory_1 = require("./../../../../factories/models/patient.factory");
 var ClinicItemComponent = (function () {
-    function ClinicItemComponent(clinicApi) {
+    function ClinicItemComponent(clinicApi, patientFactory) {
         this.clinicApi = clinicApi;
+        this.patientFactory = patientFactory;
         this.onDeleted = new core_1.EventEmitter();
     }
     ClinicItemComponent.prototype.onDelete = function () {
@@ -29,6 +31,18 @@ var ClinicItemComponent = (function () {
                 }
             });
         }
+    };
+    ClinicItemComponent.prototype.addPatient = function () {
+        var patient = this.patientFactory.createPatient();
+        patient.name = 'John';
+        this.clinic.addPatient(patient);
+        this.clinicApi.save(this.clinic)
+            .subscribe(function (res) {
+            console.log('patient has been added');
+        });
+    };
+    ClinicItemComponent.prototype.ngOnInit = function () {
+        console.log(this.clinic);
     };
     return ClinicItemComponent;
 }());
@@ -47,7 +61,8 @@ ClinicItemComponent = __decorate([
         styleUrls: ['app/modules/clinic/components/clinic-item/clinic-item.component.css']
     }),
     __param(0, core_1.Inject(api_clinic_crud_service_1.ApiClinicCrudService)),
-    __metadata("design:paramtypes", [Object])
+    __param(1, core_1.Inject(patient_factory_1.PatientFactory)),
+    __metadata("design:paramtypes", [Object, patient_factory_1.PatientFactory])
 ], ClinicItemComponent);
 exports.ClinicItemComponent = ClinicItemComponent;
 //# sourceMappingURL=clinic-item.component.js.map

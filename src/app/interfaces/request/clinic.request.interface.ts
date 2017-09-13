@@ -1,5 +1,5 @@
 export interface ClinicRequestInterface {
-    id?: number;
+    id?: string;
     title: string;
     address: string;
 }

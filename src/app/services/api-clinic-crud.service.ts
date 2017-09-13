@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Observable, Observer} from 'rxjs/Rx';
 import {ApiClinicCrudInterface} from './../interfaces/services/api-clinic-crud.interface';
 import {Clinic} from './../models/clinic';
+import {ClinicRequestInterface} from './../interfaces/request/clinic.request.interface';
 import {ClinicFactory} from './../factories/models/clinic.factory';
 import {ClinicRequestInterface as ClinicRequest} from './../interfaces/request/clinic.request.interface';
 
@@ -35,8 +36,11 @@ export class ApiClinicCrudService implements ApiClinicCrudInterface {
     //TODO: here is we may want to pass pagination parameters
     list(): Observable<Clinic[]> {
         return new Observable((observer: Observer<any>) => {
-            let clinics = JSON.parse(localStorage.getItem(this.storageKey));
-            observer.next(clinics || []);
+            let clinics = JSON.parse(localStorage.getItem(this.storageKey)) || [];
+            let models = clinics.map((item: ClinicRequestInterface)  => {
+                return this.clinicFactory.createClinic(item);
+            });
+            observer.next(models);
         });
     }
 
@@ -66,7 +70,24 @@ export class ApiClinicCrudService implements ApiClinicCrudInterface {
             if (clinic === null) {
                 observer.error({status: 404});
             }
-            observer.next(clinic);
+
+            let model = this.clinicFactory.createClinic(clinic);
+            observer.next(model);
+        });
+    }
+
+    save(clinic: Clinic): Observable<boolean> {
+        return new Observable((observer: Observer<any>) => {
+            let clinics = JSON.parse(localStorage.getItem(this.storageKey));
+            let oldClinic = null;
+            // Use every to stop iterating as soon as we find item.
+            let filteredClinics = clinics.filter(function (item: Clinic) {
+                return item.id !== clinic.id;
+            });
+            console.log(clinic);
+            filteredClinics.push(clinic);
+            localStorage.setItem(this.storageKey, JSON.stringify(filteredClinics));
+            observer.next(true);
         });
     }
 }

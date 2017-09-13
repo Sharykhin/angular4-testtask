@@ -14,6 +14,7 @@ var home_component_1 = require("./components/home/home.component");
 var api_clinic_crud_service_1 = require("./services/api-clinic-crud.service");
 var utils_1 = require("./services/utils");
 var clinic_factory_1 = require("./factories/models/clinic.factory");
+var patient_factory_1 = require("./factories/models/patient.factory");
 var confirm_deactivate_guard_1 = require("./guards/confirm-deactivate.guard");
 var AppModule = (function () {
     function AppModule() {
@@ -29,6 +30,7 @@ AppModule = __decorate([
             app_routing_1.appRoutingProviders,
             api_clinic_crud_service_1.ApiClinicCrudService,
             clinic_factory_1.ClinicFactory,
+            patient_factory_1.PatientFactory,
             utils_1.Utils,
             confirm_deactivate_guard_1.ConfirmDeactivateGuard
         ]

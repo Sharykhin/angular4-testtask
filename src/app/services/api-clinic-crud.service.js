@@ -38,8 +38,11 @@ var ApiClinicCrudService = (function () {
     ApiClinicCrudService.prototype.list = function () {
         var _this = this;
         return new Rx_1.Observable(function (observer) {
-            var clinics = JSON.parse(localStorage.getItem(_this.storageKey));
-            observer.next(clinics || []);
+            var clinics = JSON.parse(localStorage.getItem(_this.storageKey)) || [];
+            var models = clinics.map(function (item) {
+                return _this.clinicFactory.createClinic(item);
+            });
+            observer.next(models);
         });
     };
     ApiClinicCrudService.prototype.remove = function (clinic) {
@@ -69,7 +72,23 @@ var ApiClinicCrudService = (function () {
             if (clinic === null) {
                 observer.error({ status: 404 });
             }
-            observer.next(clinic);
+            var model = _this.clinicFactory.createClinic(clinic);
+            observer.next(model);
+        });
+    };
+    ApiClinicCrudService.prototype.save = function (clinic) {
+        var _this = this;
+        return new Rx_1.Observable(function (observer) {
+            var clinics = JSON.parse(localStorage.getItem(_this.storageKey));
+            var oldClinic = null;
+            // Use every to stop iterating as soon as we find item.
+            var filteredClinics = clinics.filter(function (item) {
+                return item.id !== clinic.id;
+            });
+            console.log(clinic);
+            filteredClinics.push(clinic);
+            localStorage.setItem(_this.storageKey, JSON.stringify(filteredClinics));
+            observer.next(true);
         });
     };
     return ApiClinicCrudService;
