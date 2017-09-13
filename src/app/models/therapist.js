@@ -5,4 +5,4 @@ var Therapist = (function () {
     return Therapist;
 }());
 exports.Therapist = Therapist;
-//# sourceMappingURL=Therapist.js.map
+//# sourceMappingURL=therapist.js.map

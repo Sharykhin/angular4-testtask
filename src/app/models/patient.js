@@ -5,4 +5,4 @@ var Patient = (function () {
     return Patient;
 }());
 exports.Patient = Patient;
-//# sourceMappingURL=Patient.js.map
+//# sourceMappingURL=patient.js.map
