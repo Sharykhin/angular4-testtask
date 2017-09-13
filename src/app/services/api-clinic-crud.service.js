@@ -22,6 +22,7 @@ var ApiClinicCrudService = (function () {
             var clinic = _this.clinicFactory.createClinic();
             clinic.address = parameters.address;
             clinic.title = parameters.title;
+            // TODO: it's better to move it to service since we may want to switch to sessionStorage or cookies.
             var clinics = JSON.parse(localStorage.getItem(_this.storageKey));
             if (clinics === null) {
                 localStorage.setItem(_this.storageKey, JSON.stringify([clinic]));
@@ -50,6 +51,25 @@ var ApiClinicCrudService = (function () {
             });
             localStorage.setItem(_this.storageKey, JSON.stringify(filteredClinics));
             observer.next(true);
+        });
+    };
+    ApiClinicCrudService.prototype.get = function (id) {
+        var _this = this;
+        return new Rx_1.Observable(function (observer) {
+            var clinics = JSON.parse(localStorage.getItem(_this.storageKey));
+            var clinic = null;
+            // Use every to stop iterating as soon as we find item.
+            clinics.every(function (item) {
+                if (item.id === id) {
+                    clinic = item;
+                    return false;
+                }
+                return true;
+            });
+            if (clinic === null) {
+                observer.error({ status: 404 });
+            }
+            observer.next(clinic);
         });
     };
     return ApiClinicCrudService;

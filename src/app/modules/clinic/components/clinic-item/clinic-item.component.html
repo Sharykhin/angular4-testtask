@@ -10,6 +10,7 @@
         </div>
         <div>
             <a (click)="onDelete()" class="btn btn-xs btn-danger">Delete</a>
+            <a [routerLink]="['/clinics', clinic.id]" class="btn btn-xs btn-info">View</a>
         </div>
     </div>
 </div>

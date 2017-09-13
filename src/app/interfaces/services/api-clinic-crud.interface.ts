@@ -8,4 +8,6 @@ export interface ApiClinicCrudInterface {
     list(): Observable<Clinic[]>;
 
     remove(clinic: Clinic): Observable<boolean>;
+
+    get(id: string) : Observable<Clinic>;
 }
