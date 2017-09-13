@@ -3,16 +3,19 @@ var Patient = (function () {
     function Patient() {
     }
     Patient.prototype.addClinic = function (clinic) {
-        if (this.clinics.indexOf(clinic) === -1) {
-            this.clinics.push(clinic);
-            clinic.addPatient(this);
-        }
+        var profile = clinic.getProfile();
+        this.clinics.push(profile);
     };
     Patient.prototype.addTherapist = function (therapist) {
         if (this.therapists.indexOf(therapist) === -1) {
             this.therapists.push(therapist);
-            therapist.addPatient(this);
         }
+    };
+    Patient.prototype.getProfile = function () {
+        return {
+            id: this.id,
+            name: this.name
+        };
     };
     return Patient;
 }());

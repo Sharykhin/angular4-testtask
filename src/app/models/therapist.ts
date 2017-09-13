@@ -10,14 +10,12 @@ export class Therapist {
     public addClinic(clinic: Clinic) : void {
         if (this.clinics.indexOf(clinic) === -1) {
             this.clinics.push(clinic);
-            clinic.addTherapist(this);
         }
     }
 
     public addPatient(patient: Patient) : void {
         if (this.patients.indexOf(patient) === -1) {
             this.patients.push(patient);
-            patient.addTherapist(this);
         }
     }
 }

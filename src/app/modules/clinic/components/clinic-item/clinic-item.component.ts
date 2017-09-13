@@ -36,6 +36,8 @@ export class ClinicItemComponent implements OnInit{
         let patient = this.patientFactory.createPatient();
         patient.name = 'John';
         this.clinic.addPatient(patient);
+
+        //patient.addClinic(this.clinic);
         this.clinicApi.save(this.clinic)
             .subscribe(res => {
                 console.log('patient has been added');

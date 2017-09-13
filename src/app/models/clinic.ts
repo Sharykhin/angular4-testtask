@@ -9,16 +9,22 @@ export class Clinic {
     public therapists: Therapist[];
 
     public addPatient(patient: Patient) : void {
-        if (this.patients.indexOf(patient) === -1) {
-            this.patients.push(patient);
-            patient.addClinic(this);
-        }
+        let profile = patient.getProfile();
+        this.patients.push(profile);
+        patient.addClinic(this);
     }
 
     public addTherapist(therapist: Therapist) : void {
         if (this.therapists.indexOf(therapist) === -1) {
             this.therapists.push(therapist);
-            therapist.addClinic(this);
+        }
+    }
+
+    public getProfile() {
+        return {
+            id: this.id,
+            title: this.title,
+            address: this.address
         }
     }
 }
