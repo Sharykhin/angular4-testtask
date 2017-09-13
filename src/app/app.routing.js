@@ -11,10 +11,14 @@ var appRoutes = [
         path: 'clinics',
         loadChildren: '/app/modules/clinic/clinic.module#ClinicModule'
     },
-    // {
-    //     path: 'patients',
-    //     loadChildren: '/app/modules/auth/auth.module#AuthModule'
-    // },
+    {
+        path: 'patients',
+        loadChildren: '/app/modules/patient/patient.module#PatientModule'
+    },
+    {
+        path: 'therapists',
+        loadChildren: '/app/modules/therapist/therapist.module#TherapistModule'
+    },
     {
         path: '**',
         component: not_found_component_1.NotFoundComponent

@@ -13,17 +13,17 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li routerLinkActive="active">
-                    <a routerLink="">Home</a>
+                <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
+                    <a [routerLink]="['/']">Home</a>
                 </li>
-                <li routerLinkActive="active">
-                    <a routerLink="/clinics">Clinic</a>
+                <li [routerLinkActive]="['active']">
+                    <a [routerLink]="['/clinics']">Clinic</a>
                 </li>
-                <li routerLinkActive="active">
-                    <a routerLink="/about" >Therapist</a>
+                <li [routerLinkActive]="['active']">
+                    <a [routerLink]="['/patients']">Therapist</a>
                 </li>
-                <li routerLinkActive="active">
-                    <a routerLink="/about" >Therapist</a>
+                <li [routerLinkActive]="['active']">
+                    <a [routerLink]="['/therapists']" >Therapist</a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
