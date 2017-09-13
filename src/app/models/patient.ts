@@ -6,4 +6,11 @@ export class Patient {
     public name: string;
     public clinics: Clinic[];
     public therapists: Therapist[];
+
+    public addClinic(clinic: Clinic) {
+        if (this.clinics.indexOf(clinic) === -1) {
+            this.clinics.push(clinic);
+            clinic.addPatioen(this);
+        }
+    }
 }
