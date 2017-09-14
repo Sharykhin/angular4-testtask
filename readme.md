@@ -14,6 +14,11 @@ Requirements:
 npm  
 bower
 
+bower can be installed globally by npm:
+```bash
+npm install bower -g
+```
+
 Instalattion:
 ------------
 
