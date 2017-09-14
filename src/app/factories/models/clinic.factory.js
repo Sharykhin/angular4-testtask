@@ -18,6 +18,7 @@ var ClinicFactory = (function () {
     function ClinicFactory(utils) {
         this.utils = utils;
     }
+    // TODO: think about using any, it may be better to add optionals fields to ClinicRequest?
     ClinicFactory.prototype.createClinic = function (parameters) {
         parameters = parameters || {};
         var clinic = new clinic_1.Clinic();

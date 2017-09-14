@@ -11,7 +11,7 @@ export class ClinicFactory {
     ){
 
     }
-
+    // TODO: think about using any, it may be better to add optionals fields to ClinicRequest?
     createClinic(parameters?: ClinicRequest | any) : Clinic {
         parameters = parameters || {};
         let clinic = new Clinic();
