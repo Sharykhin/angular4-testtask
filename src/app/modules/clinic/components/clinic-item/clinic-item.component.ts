@@ -35,7 +35,7 @@ export class ClinicItemComponent implements OnInit{
                 });
         }
     }
-    //TODO: test method.
+    //TODO: test method. Do not create a seaprate searvice using assignment here is a good place.
     addPatient() : void {
         let patient = this.patientFactory.createPatient();
         patient.name = 'John';

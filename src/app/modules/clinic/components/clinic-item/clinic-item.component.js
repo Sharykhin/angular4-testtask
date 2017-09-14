@@ -35,7 +35,7 @@ var ClinicItemComponent = (function () {
             });
         }
     };
-    //TODO: test method.
+    //TODO: test method. Do not create a seaprate searvice using assignment here is a good place.
     ClinicItemComponent.prototype.addPatient = function () {
         var patient = this.patientFactory.createPatient();
         patient.name = 'John';
