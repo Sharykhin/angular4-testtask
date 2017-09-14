@@ -18,10 +18,12 @@ var PatientFactory = (function () {
     function PatientFactory(utils) {
         this.utils = utils;
     }
-    PatientFactory.prototype.createPatient = function () {
+    PatientFactory.prototype.createPatient = function (parameters) {
+        parameters = parameters || {};
         var patient = new patient_1.Patient();
         patient.id = this.utils.uuid();
-        patient.clinics = [];
+        patient.name = parameters.name || null;
+        patient.clinics = parameters.clinics || [];
         patient.therapists = [];
         return patient;
     };

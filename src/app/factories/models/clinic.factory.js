@@ -24,8 +24,8 @@ var ClinicFactory = (function () {
         clinic.id = parameters.id || this.utils.uuid();
         clinic.title = parameters.title || null;
         clinic.address = parameters.address || null;
-        clinic.patients = [];
-        clinic.therapists = [];
+        clinic.patients = parameters.patients || [];
+        clinic.therapists = parameters.therapists || [];
         return clinic;
     };
     return ClinicFactory;

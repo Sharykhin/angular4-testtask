@@ -1,7 +1,7 @@
 import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './components/home/home.component';
-import { NotFoundComponent } from './components/not-found/not-found.component'
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 import { ModuleWithProviders } from '@angular/core';
 

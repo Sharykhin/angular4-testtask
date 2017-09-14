@@ -12,14 +12,14 @@ export class ClinicFactory {
 
     }
 
-    createClinic(parameters?: ClinicRequest) : Clinic {
+    createClinic(parameters?: ClinicRequest | any) : Clinic {
         parameters = parameters || {};
         let clinic = new Clinic();
         clinic.id = parameters.id || this.utils.uuid();
         clinic.title = parameters.title || null;
         clinic.address = parameters.address || null;
-        clinic.patients = [];
-        clinic.therapists = [];
+        clinic.patients = parameters.patients || [];
+        clinic.therapists = parameters.therapists || [];
         return clinic;
     }
 }

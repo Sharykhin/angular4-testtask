@@ -14,10 +14,13 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 var core_1 = require("@angular/core");
 var clinic_1 = require("./../../../../models/clinic");
 var api_clinic_crud_service_1 = require("./../../../../services/api-clinic-crud.service");
+var api_patient_crud_service_1 = require("./../../../../services/api-patient-crud.service");
 var patient_factory_1 = require("./../../../../factories/models/patient.factory");
+var Rx_1 = require("rxjs/Rx");
 var ClinicItemComponent = (function () {
-    function ClinicItemComponent(clinicApi, patientFactory) {
+    function ClinicItemComponent(clinicApi, patientApi, patientFactory) {
         this.clinicApi = clinicApi;
+        this.patientApi = patientApi;
         this.patientFactory = patientFactory;
         this.onDeleted = new core_1.EventEmitter();
     }
@@ -32,15 +35,20 @@ var ClinicItemComponent = (function () {
             });
         }
     };
+    //TODO: test method.
     ClinicItemComponent.prototype.addPatient = function () {
         var patient = this.patientFactory.createPatient();
         patient.name = 'John';
         this.clinic.addPatient(patient);
-        //patient.addClinic(this.clinic);
-        this.clinicApi.save(this.clinic)
-            .subscribe(function (res) {
-            console.log('patient has been added');
-        });
+        patient.addClinic(this.clinic);
+        var requests = [];
+        requests.push(this.clinicApi.save(this.clinic));
+        requests.push(this.patientApi.save(patient));
+        Rx_1.Observable.forkJoin(requests).subscribe(function (response) {
+            console.info(response, "onNext {$response}");
+        }, function (error) {
+            console.warn(error);
+        }, function () { return console.log('completed'); });
     };
     ClinicItemComponent.prototype.ngOnInit = function () {
         console.log(this.clinic);
@@ -62,8 +70,9 @@ ClinicItemComponent = __decorate([
         styleUrls: ['app/modules/clinic/components/clinic-item/clinic-item.component.css']
     }),
     __param(0, core_1.Inject(api_clinic_crud_service_1.ApiClinicCrudService)),
-    __param(1, core_1.Inject(patient_factory_1.PatientFactory)),
-    __metadata("design:paramtypes", [Object, patient_factory_1.PatientFactory])
+    __param(1, core_1.Inject(api_patient_crud_service_1.ApiPatientCrudService)),
+    __param(2, core_1.Inject(patient_factory_1.PatientFactory)),
+    __metadata("design:paramtypes", [Object, Object, patient_factory_1.PatientFactory])
 ], ClinicItemComponent);
 exports.ClinicItemComponent = ClinicItemComponent;
 //# sourceMappingURL=clinic-item.component.js.map

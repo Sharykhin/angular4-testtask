@@ -7,6 +7,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { HomeComponent } from './components/home/home.component';
 
 import {ApiClinicCrudService} from './services/api-clinic-crud.service';
+import {ApiPatientCrudService} from './services/api-patient-crud.service';
 import {Utils} from './services/utils';
 import {ClinicFactory} from './factories/models/clinic.factory';
 import {PatientFactory} from './factories/models/patient.factory';
@@ -20,6 +21,7 @@ import {ConfirmDeactivateGuard} from './guards/confirm-deactivate.guard';
   providers: [
     appRoutingProviders,
     ApiClinicCrudService,
+    ApiPatientCrudService,
     ClinicFactory,
     PatientFactory,
     Utils,

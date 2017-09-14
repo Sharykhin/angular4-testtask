@@ -3,14 +3,18 @@ var Therapist = (function () {
     function Therapist() {
     }
     Therapist.prototype.addClinic = function (clinic) {
-        if (this.clinics.indexOf(clinic) === -1) {
-            this.clinics.push(clinic);
-        }
+        var profile = clinic.getProfile();
+        this.clinics.push(profile);
     };
     Therapist.prototype.addPatient = function (patient) {
-        if (this.patients.indexOf(patient) === -1) {
-            this.patients.push(patient);
-        }
+        var profile = patient.getProfile();
+        this.patients.push(profile);
+    };
+    Therapist.prototype.getProfile = function () {
+        return {
+            id: this.id,
+            position: this.position
+        };
     };
     return Therapist;
 }());

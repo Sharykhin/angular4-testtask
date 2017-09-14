@@ -7,9 +7,8 @@ var Patient = (function () {
         this.clinics.push(profile);
     };
     Patient.prototype.addTherapist = function (therapist) {
-        if (this.therapists.indexOf(therapist) === -1) {
-            this.therapists.push(therapist);
-        }
+        var profile = therapist.getProfile();
+        this.therapists.push(therapist);
     };
     Patient.prototype.getProfile = function () {
         return {

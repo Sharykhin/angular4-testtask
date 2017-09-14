@@ -1,26 +1,27 @@
 import {Patient} from './patient';
 import {Therapist} from './therapist';
+import {ClinicInterface} from './../interfaces/models/clinit.interface';
+import {PatientInterface} from './../interfaces/models/patient.interface';
+import {TherapistInterface} from './../interfaces/models/therapist.interface';
 
-export class Clinic {
+export class Clinic implements ClinicInterface {
     public id: string;
     public title: string;
     public address: string;
-    public patients: Patient[];
-    public therapists: Therapist[];
+    public patients: PatientInterface[];
+    public therapists: TherapistInterface[];
 
     public addPatient(patient: Patient) : void {
-        let profile = patient.getProfile();
+        const profile = patient.getProfile();
         this.patients.push(profile);
-        patient.addClinic(this);
     }
 
     public addTherapist(therapist: Therapist) : void {
-        if (this.therapists.indexOf(therapist) === -1) {
-            this.therapists.push(therapist);
-        }
+        const profile = therapist.getProfile();
+        this.therapists.push(therapist);
     }
 
-    public getProfile() {
+    public getProfile() : ClinicInterface {
         return {
             id: this.id,
             title: this.title,

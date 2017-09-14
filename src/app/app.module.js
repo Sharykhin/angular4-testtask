@@ -12,6 +12,7 @@ var app_component_1 = require("./components/app/app.component");
 var not_found_component_1 = require("./components/not-found/not-found.component");
 var home_component_1 = require("./components/home/home.component");
 var api_clinic_crud_service_1 = require("./services/api-clinic-crud.service");
+var api_patient_crud_service_1 = require("./services/api-patient-crud.service");
 var utils_1 = require("./services/utils");
 var clinic_factory_1 = require("./factories/models/clinic.factory");
 var patient_factory_1 = require("./factories/models/patient.factory");
@@ -29,6 +30,7 @@ AppModule = __decorate([
         providers: [
             app_routing_1.appRoutingProviders,
             api_clinic_crud_service_1.ApiClinicCrudService,
+            api_patient_crud_service_1.ApiPatientCrudService,
             clinic_factory_1.ClinicFactory,
             patient_factory_1.PatientFactory,
             utils_1.Utils,
